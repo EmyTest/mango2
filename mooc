@@ -2,3 +2,23 @@
 
 2、关于mock;
         https://blog.csdn.net/peiyao456/article/details/77075173
+
+
+
+
+3、思考点：
+
+接口地址                    请求数据
+
+接口类型                    预期结果
+
+headers                    数据依赖***
+
+
+
+
+4、python操作excel：
+                https://blog.csdn.net/majordong100/article/details/50708365
+
+
+
