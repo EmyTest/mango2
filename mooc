@@ -19,6 +19,167 @@ headers                    数据依赖***
 
 4、python操作excel：
                 https://blog.csdn.net/majordong100/article/details/50708365
+                
+                
+                
+https://www.cnblogs.com/blackclody/p/6885630.html
 
 
 
+
+
+
+
+https://www.cnblogs.com/wjx1/p/5084980.html
+
+
+class FooChild(FooParent):                                                               
+    def __init__(self):
+        FooParent.__init__(self)
+        print 'Child'
+        
+    def bar(self,message):
+        FooParent.bar(self,message)
+        print 'Child bar function.'
+        print self.parent                                                  
+        
+        
+        
+class FooChild(FooParent):
+    def __init__(self):
+        super(FooChild,self).__init__()
+        print 'Child'
+        
+    def bar(self,message):
+        super(FooChild, self).bar(message)
+        print 'Child bar fuction'
+        print self.parent
+        
+        
+  https://www.cnblogs.com/blackclody/p/6885736.html
+  
+  https://www.cnblogs.com/bahcelor/p/6872243.html
+  
+  
+  
+  
+ 
+  
+  
+python中 __str__和__repr__     :
+
+
+如果要把一个类的实例变成 str，就需要实现特殊方法__str__()：
+
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+    def __str__(self):
+        return '(Person: %s, %s)' % (self.name, self.gender)
+现在，在交互式命令行下用 print 试试：
+
+>>> p = Person('Bob', 'male')
+>>> print p
+(Person: Bob, male)
+但是，如果直接敲变量 p：
+
+>>> p
+<main.Person object at 0x10c941890>
+似乎__str__() 不会被调用。
+
+因为 Python 定义了__str__()和__repr__()两种方法，__str__()用于显示给用户，而__repr__()用于显示给开发人员。
+
+有一个偷懒的定义__repr__的方法：
+
+class Person(object):
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
+    def __str__(self):
+        return '(Person: %s, %s)' % (self.name, self.gender)
+    __repr__ = __str__
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+【斐波拉契数列】
+**一：
+
+class Fib(object):
+    def __init__(self,num):
+        a,b,l = 0,1,[]
+        for n in range(num):
+            l.append(a)
+            a,b = b,a+b
+        self.numbers = l
+    def __str__(self):
+        return str(self.numbers)
+    __repr__=__str__
+    def __len__(self):
+        return len(self.numbers)
+f = Fib(12)
+print(f)
+print(len(f))
+
+
+
+**二：
+
+class Fib(object):
+    def __call__(self,num):
+        a,b,l = 0,1,[]
+        for n in range(num):
+            l.append(a)
+            a,b = b,a+b
+        return l
+
+f = Fib()
+print f(10)
+
+
+
+
+
+
+
+
+
+
+慕课视频 7-12
+处理返回值中的乱码的问题  坑：
+
+
+https://blog.csdn.net/chuatony/article/details/72628868
+
+
+
+s = '漢  χαν  хан'
+print('unicode: ' + s.encode('unicode-escape').decode('utf-8'))
+ 
+u = s.encode('unicode-escape').decode('utf-8')
+print('解回字符串: ' + u.encode("utf-8").decode('unicode-escape'))
+ 
+#u = r'\u6f22  \u03c7\u03b1\u03bd  \u0445\u0430\u043d'
+#print('解回字符串: ' + u.encode("utf-8").decode('unicode-escape'))
+
+
+
+class CommonUtil:
+    def is_contain(self,str_one,str_two):
+        flag = None
+        if isinstance(str_one,str ):
+            str_one = str_one.encode('unicode-escape').decode('utf-8')   #7-12 关于处理乱码的问题
+        if str_one in str_two:
+            flag = True
+        else:
+            flag = False
+        return flag
