@@ -217,3 +217,23 @@ https://blog.csdn.net/qq_33850908/article/details/79091241
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysql-python
 
 
+
+
+
+
+import MySQLdb
+conn = MySQLdb.connect(
+            host='xxx.xxx.xxx.xxx',
+            port=3306,
+            user='xxx',
+            password='xxxx',
+            db='message',
+            charset='utf8'
+        )
+
+cur = conn.cursor()              #通过获取到的数据库连接conn下的cursor()方法来创建游标。
+cur.execute("SELECT * FROM t_message_log WHERE id = '13'")
+print(cur.fetchone())
+
+
+*******注意db应该填表名而不是数据库名
