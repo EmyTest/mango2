@@ -197,3 +197,23 @@ case依赖：此接口依赖上一个【__】接口
 依赖的返回数据：上一个接口返回的value            data:name            data:[1]:name
 
 数据依赖字段：此接口的key
+
+
+
+
+
+
+
+
+
+
+
+network   ---  XHR  查看接口
+
+
+
+【mysql-python】
+https://blog.csdn.net/qq_33850908/article/details/79091241
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysql-python
+
+
