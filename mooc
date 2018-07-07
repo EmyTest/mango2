@@ -247,3 +247,19 @@ print(cur.fetchone())
         关于  self   全局变量 的
         python知识    
         待解决
+
+
+
+
+5-3   unittest中assert的使用
+坑：
+运行用例时，报错string indices must be integers
+
+解决办法：
+        res = self.run.run_main(url,'POST',data)
+        print(res)
+        res = json.loads(res)      #【将字符串转成dict格式 】 或：
+        res=json.loads(res)        #【将字符串转成json格式】
+
+
+https://blog.csdn.net/u010534192/article/details/75443304
