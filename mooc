@@ -263,3 +263,11 @@ print(cur.fetchone())
 
 
 https://blog.csdn.net/u010534192/article/details/75443304
+
+
+
+
+
+
+unittest  减少依赖执行
+执行顺序按照字母排序
