@@ -271,3 +271,72 @@ https://blog.csdn.net/u010534192/article/details/75443304
 
 unittest  减少依赖执行
 执行顺序按照字母排序
+
+
+
+
+
+
+
+
+
+
+
+
+
+fp = open(filepath,'wb')
+
+
+
+
+【【python开发测试框架】】
+1、requests
+2、unittest
+3、htmltestrunner
+4、数据存储  数据库/excel  /
+5、Jenkins
+
+
+
+【【如何管理case】】
+case的  skip     #unittest.skip('test_02')
+excel
+
+
+
+【【简述case的执行】】
+case的先后执行
+有依赖的情况
+
+
+
+【【如何解决case依赖】】
+定义全局变量
+存储在配置文件  or数据库
+
+
+
+
+
+
+
+
+
+
+6-3
+关于转码
+decode  
+incode
+dumps
+。。。
+
+
+
+
+【【python中json文件处理涉及的四个函数json.dumps()和json.loads()、json.dump()和json.load()的区分】】
+
+1、json.dumps()和json.loads()是json格式处理函数（可以这么理解，json是字符串）
+　　(1)json.dumps()函数是将一个Python数据类型列表进行json格式的编码（可以这么理解，json.dumps()函数是将字典转化为字符串）
+　　(2)json.loads()函数是将json格式数据转换为字典（可以这么理解，json.loads()函数是将字符串转化为字典）
+
+2、json.dump()和json.load()主要用来读写json文件函数
