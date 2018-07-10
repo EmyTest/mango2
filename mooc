@@ -392,3 +392,18 @@ r = requests.post(url,data=para,headers= header)
 
 # print('get请求获取的响应结果json类型',r.text)
 print("token",r.headers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+【python发送http请求之requests模块：】
+【https://blog.csdn.net/onlyanyz/article/details/45368841】
