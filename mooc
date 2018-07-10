@@ -359,3 +359,36 @@ dumps
 
 返回数据转化成json格式【详见runmethod.py】
 return json.dumps(res,ensure_ascii=False,sort_keys=True,indent=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.cnblogs.com/hanxiaobei/p/6613968.html
+获取header部分的值 
+request.header
+import json
+
+url = "http://192.168.1.48/wordoor_uaas_api/v1/sessions/create"
+para = {"acc":"mgtestmmm@qq.com","pwd":"123456"}
+header ={}
+
+r = requests.post(url,data=para,headers= header)
+
+# print('get请求获取的响应结果json类型',r.text)
+print("token",r.headers)
