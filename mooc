@@ -412,3 +412,16 @@ print("token",r.headers)
 
 【requests中文文档】
 http://cn.python-requests.org/zh_CN/latest/?utm_source=qq&utm_medium=social&utm_oi=58424368824320
+
+
+
+
+
+
+
+
+
+
+case依赖
+【jsonpath_rw】
+https://www.cnblogs.com/shapeL/archive/2018/05/29/9106437.html
