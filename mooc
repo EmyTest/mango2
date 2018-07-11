@@ -407,3 +407,8 @@ print("token",r.headers)
 
 【python发送http请求之requests模块：】
 【https://blog.csdn.net/onlyanyz/article/details/45368841】
+
+
+
+【requests中文文档】
+http://cn.python-requests.org/zh_CN/latest/?utm_source=qq&utm_medium=social&utm_oi=58424368824320
