@@ -348,32 +348,8 @@ dumps
 
 
 
-
-
-
-
-
-
-
-
-
 返回数据转化成json格式【详见runmethod.py】
 return json.dumps(res,ensure_ascii=False,sort_keys=True,indent=2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -400,11 +376,6 @@ print("token",r.headers)
 
 
 
-
-
-
-
-
 【python发送http请求之requests模块：】
 【https://blog.csdn.net/onlyanyz/article/details/45368841】
 
@@ -417,11 +388,26 @@ http://cn.python-requests.org/zh_CN/latest/?utm_source=qq&utm_medium=social&utm_
 
 
 
-
-
-
-
-
 case依赖
 【jsonpath_rw】
 https://www.cnblogs.com/shapeL/archive/2018/05/29/9106437.html
+
+
+
+fiddler返回的值 和 数据库查询出来的值格式不一致：
+遍历循环    比对值是否一致
+
+
+
+
+Python3中已经不能使用cmp()函数了，被如下五个函数替代:
+
+import operator       #首先要导入运算符模块
+operator.gt(1,2)      #意思是greater than（大于）
+operator.ge(1,2)      #意思是greater and equal（大于等于）
+operator.eq(1,2)      #意思是equal（等于）
+operator.le(1,2)      #意思是less and equal（小于等于）
+operator.lt(1,2)      #意思是less than（小于）
+
+
+
