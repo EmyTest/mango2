@@ -1,0 +1,9 @@
+1、having 中不能使用未参与分列的组(　having是分组（group by）后的筛选条件，分组后的数据组内再筛选)，having 不能替代where 作用不一样，having是对组进行过滤，where是每条记录进行过滤。
+
+ 　2、having 是对Group By 的条件分组后的数据进行筛选（与where类似，都是筛选，只不过having是用来筛选分组后的组）。
+
+　　3、在where 不能使用聚合函数，必须使用having  ，having要位于 Group By  之后。
+
+　　4、having的使用几乎是与where 一样的，也可以用 in。
+
+   — count(*) in(5,8,10)
