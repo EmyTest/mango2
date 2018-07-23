@@ -7,3 +7,21 @@
 　　4、having的使用几乎是与where 一样的，也可以用 in。
 
    — count(*) in(5,8,10)
+
+
+
+
+select Sno,count(score) as '不及格科目数' from tb_grade where score<60 group by Sno having count(score)>=2;
+
+
+
+SELECT s.sid,s.sname 
+from student as s 
+left join sc as sc on s.sid = sc.sid
+where sc.cid = '001'
+and EXISTS(
+  select * from sc as sc_2 
+  where sc.sid = sc_2.sid 
+  and sc_2.cid='002');
+  
+  
