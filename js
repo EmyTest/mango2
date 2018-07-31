@@ -136,3 +136,53 @@ F12 启用调试模式， 在调试窗口中点击 "Console" 菜单。
 
 window.alert 的补充:
 window.alert(5+6) 与 window.alert("5+6") 输出的值是不一样的。window.alert(5+6) 会输出 11，而window.alert("5+6") 会输出 5+6。这是因为当用引号时会认为引号中是字符串，从而直接将引号中的内容打印出来。
+
+
+
+
+
+
+【JavaScript 数据类型】
+JavaScript 有多种数据类型：数字，字符串，数组，对象等等：
+	var length = 16;                                  // Number 通过数字字面量赋值 
+	var points = x * 10;                              // Number 通过表达式字面量赋值
+	var lastName = "Johnson";                         // String 通过字符串字面量赋值
+	var cars = ["Saab", "Volvo", "BMW"];              // Array  通过数组字面量赋值
+	var person = {firstName:"John", lastName:"Doe"};  // Object 通过对象字面量赋值
+	
+	
+	
+	
+JavaScript 字母大小写
+JavaScript 对大小写是敏感的。
+	当编写 JavaScript 语句时，请留意是否关闭大小写切换键。
+	函数 getElementById 与 getElementbyID 是不同的。
+	同样，变量 myVariable 与 MyVariable 也是不同的。
+	
+	
+	
+【笔记】
+三种变量命名规则：
+	var firstName='king';//小驼峰
+	var FirstName='queen';//大驼峰
+	var first_name='maizi';//下划线法
+
+JavaScript是弱类型编程语言,定义变量都使用 var 定义,与 Java 这种强类型语言有区别.
+在定义后可以通过 typeOf() 来获取JavaScript中变量的数据类型.
+	// Number 通过数字字面量赋值 
+	 // Number 通过表达式字面量赋值
+	// String 通过字符串字面量赋值
+	// Array  通过数组字面量赋值 
+	// Object 通过对象字面量赋值
+	
+	
+	
+应用注释符号验证浏览器是否支持 JavaScript 脚本功能
+如果用户不能确定浏览器是否支持JavaScript脚本，那么可以应用HTML提供的注释符号进行验证。HTML注释符号是以 <-- 开始以 --> 结束的。如果在此注释符号内编写 JavaScrip t脚本，对于不支持 JavaScript 的浏览器，将会把编写的 JavaScript 脚本作为注释处理。
+使用 JavaScript 脚本在页面中输出一个字符串，将 JavaScript 脚本编写在 HTML 注释中，如果浏览器支持 JavaScript 将输出此字符串，如果不支持将不输出此字符串，代码如下:
+
+<script>
+<!--
+document.write("您的浏览器支持JavaScript脚本!");
+//-->
+</script>
