@@ -1,0 +1,21 @@
+服务关键字的配置
+platformName   手机操作系统的类型
+capabilities.setCapability.(MobileCapabilityType.PLATFORM_NAME,"Android");
+capabilities.setCapability.(MobileCapabilityType.PLATFORM_NAME,"ios");
+
+android   ,ios  ,FirefoxOS
+
+
+
+deviceName   使用的手机名字
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"ZX1G22X9D2")
+
+
+
+APP   被测app
+app包的路径
+本地的绝对路径，或者远程服务器上的地址
+.ipa或者.apk，或者前2者的压缩包.zip
+比如： /abs/path/to/my.apk 或    http://myapp.com/app.ipa
+
+
