@@ -1,1 +1,158 @@
 https://selenium-python-zh.readthedocs.io/en/latest/waits.html
+
+1、基本的浏览器启动
+  from selenium import webdriver
+  from selenium.webdriver.common.keys import Keys
+
+  driver = webdriver.Firefox()
+  driver.get("http://www.python.org")
+  assert "Python" in driver.title
+  elem = driver.find_element_by_name("q")
+  elem.clear()
+  elem.send_keys("pycon")
+  elem.send_keys(Keys.RETURN)
+  assert "No results found." not in driver.page_source
+  driver.close()
+  
+  
+  
+ 2、selenium + unittest 测试用例的编写
+  import unittest
+  from selenium import webdriver
+  from selenium.webdriver.common.keys import Keys
+
+  class PythonOrgSearch(unittest.TestCase):
+
+      def setUp(self):
+          self.driver = webdriver.Firefox()
+
+      def test_search_in_python_org(self):
+          driver = self.driver
+          driver.get("http://www.python.org")
+          self.assertIn("Python", driver.title)
+          elem = driver.find_element_by_name("q")
+          elem.send_keys("pycon")
+          elem.send_keys(Keys.RETURN)
+          assert "No results found." not in driver.page_source
+
+
+      def tearDown(self):
+          self.driver.close()
+
+  if __name__ == "__main__":
+      unittest.main()
+      
+      
+      
+      
+      
+ 构建测试集
+ import unittest
+ import testadd
+ import testsub
+ 
+ suite = unittest.TestSuite()
+ 
+ suite.addTest(testadd.TestAdd("test_add"))
+ suite.addTest(testadd.TestAdd(test_add2"))
+ 
+ suite.addTest(testadd.TestSub(test_add2"))
+ suite.addTest(testadd.TestSub(test_add2"))
+ 
+ if __name__ == '__main__':
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
+    
+    
+    
+ unittest的执行顺序：
+ 0-9，A-Z,a~z
+ 自定义的执行顺序：
+  addTest（）方法
+  
+  suite.addTest(TestBdd("test_ccc")
+  suite.addTest(TestAdd("test_bbb")
+  suite.addTest(testBdd("test_aaa")
+  
+  
+  【跳过测试和预期失败】
+  unittest.skip(reason) 
+  无条件地跳过装饰的测试，说明跳过测试的原因
+  
+  unittest.skipIf(condition,reason) 
+  跳过装饰的测试，如果条件为真
+  
+  unittest.skipUnless(condition,reason)  
+  跳过装饰的测试，除非条件为真
+  
+  unittest.expectedFailure()
+  测试标记为失败，不管执行结果是否失败，统一标记为失败
+  
+  import unittest
+
+class MyTest(unittest.TestCase):
+    def setUp(self):
+        pass
+    def tearDown(self):
+        pass
+    @unittest.skip("直接跳过测试")
+    def test_skip(self):
+        print("test aaa")
+    @unittest.skipIf(3>2,"当条件为True时跳过测试")
+    def test_skip_unless(self):
+        print('test ccc')
+    @unittest.expectedFailure
+    def test_expected_failure(self):
+        self.assertEqual(2,3)
+if __name__=='__main__':
+    unittest.main()
+    
+    
+    
+
+import time
+print("获取当前时间戳: ",time.time())
+print("当前时间的字符串形式: ",time.ctime())
+print("当前时间的struct_time形式: ",time.localtime())
+print("获取当前时间，可以将时间格式化为字符串: ",time.strftime("%Y-%m-%d %H-%M-%S"))
+
+
+
+
+#生成HTML报告
+
+from selenium import webdriver
+import unittest
+from HTMLTestRunner import HTMLTestRunner
+
+class Baidu(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+        self.driver.implicitly_wait(10)
+        self.base_url = "http://www.baidu.com"
+    def test_baidu_search(self):
+        driver = self.driver
+        driver.get(self.base_url)
+        driver.find_element_by_id("kw").send_keys("HTMLTestRunner")
+        driver.find_element_by_id("su").click()
+    def tearDown(self):
+        self.driver.quit()
+if __name__=="__main__":
+    testunit = unittest.TestSuite()
+    testunit.addTest(Baidu("test_baidu_search"))
+
+    fp = open('./result.html','wb')
+    runner = HTMLTestRunner(stream=fp,
+                            title='百度搜索测试报告',
+                            description='用例执行情况：')
+    runner.run(testunit)
+    fp.close()
+
+
+
+【新增时间标题】
+    now = time.strftime("%Y-%m-%d %H-%M-%S")
+    filename = './'+now+'result.html'
+    fp = open(filename,'wb')
+ 
+ 
