@@ -19,3 +19,23 @@ app包的路径
 比如： /abs/path/to/my.apk 或    http://myapp.com/app.ipa
 
 
+配置：
+automationName：    text    XCUITest
+platformName：      text    iOS
+platformVersion：   text    11.3
+deviceName：        text    iPhone Simulator
+app：               filepath  /文件路径/..
+
+
+
+
+
+unittest和po的结合
+unittest的使用
+断言
+htmltestrunner
+case的管理
+po和unittest和HTMLtestrunner
+
+
+
