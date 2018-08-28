@@ -37,5 +37,8 @@ htmltestrunner
 case的管理
 po和unittest和HTMLtestrunner
 
+为什么设置了SDK的环境变量后在cmd那里输入android后显示"不是内部或外部命令..."?
 
+1、SDK下载
+2、在解压的SDK文件，找到“platform-tools”和“tools”并把这两个路径复制粘贴到Path环境变量里
 
