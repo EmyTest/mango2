@@ -57,4 +57,9 @@ po和unittest和HTMLtestrunner
 
 
 
+driver.find_element_by_uiautomator('new UiSelector().text')
+
+driver.find_element_by_uiautomator('new UiSelector().resource-id("cn...........")')
+
+app端用xpath没有web端的效率高
 
