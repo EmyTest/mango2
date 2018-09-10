@@ -1,0 +1,186 @@
+1、
+a=['1','2','3','4','5'], 如何取前三个数；如何取后两个数；如何让其倒序排列；如何每两个取一个
+
+print(a[0:3])
+print(a[-1:-3:-1])
+print(a[-1::-1])
+print(a[::2])
+
+
+
+2、
+list1='hello'      list2='world'      两个字符串如何拼接在一起；假设拼接好的字符串是helloworld，如何让它全变成大写，如何查找list3里面的‘o’的个数
+
+list3 = list1+list2
+print(list3)
+print(list3.count('o'))
+print(list3.upper())
+
+
+
+3、b = ‘i am a owesome geeker !’ 将字符串按照单词打印出来
+
+b = 'i am a owesome geeker !'
+print(list(b))
+
+
+
+4、
+zoo = {'1':'cat','2':'dog','3':'monkey'},如何将('4':'panda')放进去
+
+zoo = {'1':'cat','2':'dog','3':'monkey'}
+key='4'
+value='panda'
+zoo[key]=value
+print(zoo)
+
+
+
+5、
+用一行代码实现一个列表，列表的内容是1-10这10个数的平方
+https://www.cnblogs.com/huangbiquan/p/8030334.html
+
+print([x**2 for x in range(1,11)])
+
+
+print([(lambda x:x**2)(x) for x in range(1,11)])
+
+
+print(list(map(lambda x:x*x,range(1,11))))
+
+
+def cube(x):
+    return x**2
+print(list(map(cube,range(1,11))))
+
+
+
+6、
+python中的__init__的作用
+1. Python中package的标识，不能删除
+
+2. 定义__all__用来模糊导入
+
+3. 编写Python代码(不建议在__init__中写python模块，可以在包中在创建另外的模块来写，尽量保证__init__.py简单）
+
+
+
+7、
+python遍历一个目录，输出所有的文件名
+
+import os
+dir = "e:\\"
+for root, dirs, files in os.walk(dir):
+    for file in files:
+        print(os.path.join(root,file))
+        
+        
+8、
+python高阶函数
+python之常用的高阶函数
+高阶函数指的是能接收函数作为参数的函数；python中有一些内置的高阶函数，在某些场合使用可以提高代码的效率．下面谈谈python常用的三个高阶函数。
+
+map()
+map函数可以把一个迭代对象转换成另一个可迭代对象，不过在python3中，结果都是一个map对象，它是一个生成器，可以通过next函数获取它的元素；使用map函数的代码效率比for循环和列表生成式都要高。
+
+参数：
+
+一个函数func，可以是任何函数；
+
+一个或多个可迭代对象，可以是元组、集合、列表等；如果函数有多个参数就传入多个可迭代对象；
+
+# 单个参数
+p = map(int,{2,3,4,5})
+
+# 多个参数
+def add(x,y,z):
+    return x+y+z
+
+p1 = map(add,[1,2,3],(4,5,6),{7,8,9}) # 注意如果是集合，顺序是不固定的
+# 由于是一个map对象，可以转换为list对象
+li = list(p1)
+reduce()
+reduce函数在python3中被放置到functool模块中了，要使用需要引入；
+
+参数：一个函数f，一个可迭代对象，一个可选的初始值；
+
+功能：通过对函数f的反复调用，可以得到最终的积累结果；
+
+def test5(listx):
+    from functools import reduce
+    res = reduce(add1,listx)
+    print(res)
+def add1(x,y):
+    return x+y
+
+li = [1,2,4,7,8]
+test5(li)
+filter()
+过滤函数，可以将可迭代对象里的每个元素依次作用于函数，通过返回的false和true对元素进行保留或丢弃；
+
+参数：一个函数，一个可迭代对象；
+
+得到的结果是一个filter对象，该对象是一个生成器；
+
+li = [1, 2, 4, 7, 8]
+res = filter(lambda x: x % 2 == 1, li)
+print(list(res))
+
+
+
+
+
+9、斐波拉契生成器
+def fibonicci(n):
+    start = 0
+    def fib(x):
+        if x == 0:
+            return 0
+        elif x == 1:
+            return 1
+        else:
+            return fib(x - 1) + fib(x - 2)
+    while start < n:
+        start += 1
+        yield fib(start)
+print([x for x in fibonicci(10)])
+
+
+
+
+10、
+python如何实现多线程，如何实现线程同步？
+
+Python多线程编程中常用方法：
+
+1、join()方法：如果一个线程或者在函数执行的过程中调用另一个线程，并且希望待其完成操作后才能执行，那么在调用线程的时就可以使用被调线程的join方法join([timeout]) timeout：可选参数，线程运行的最长时间
+
+2、isAlive()方法：查看线程是否还在运行
+
+3、getName()方法：获得线程名
+
+4、setDaemon()方法：主线程退出时，需要子线程随主线程退出，则设置子线程的setDaemon()
+
+如何实现多线程：  https://www.cnblogs.com/xbkp/p/5444167.html
+如何实现线程同步：   https://blog.csdn.net/sunhuaqiang1/article/details/69389316
+
+
+
+11、
+什么是协程？试着实现...
+
+
+12、
+实现一个方法，逐行读取一个文件，找出每行字母‘A’的个数
+
+f = open("F:\\aaa11.txt")  # 返回一个文件对象
+line = f.readline()  # 调用文件的 readline()方法
+while line:
+    # print(line)     # 后面跟 ',' 将忽略换行符
+    lists = list(line)
+    letter_num = lists.count('A')
+    # print(line, end = '')　      # 在 Python 3 中使用
+    print(letter_num)
+    line = f.readline()
+
+f.close()
