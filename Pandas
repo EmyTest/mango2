@@ -1,0 +1,12 @@
+Pandas中的数据结构，常用到的有Series和DataFrame两种。
+
+Series：一维数组，与Python基本的数据结构List也很相近。【注：list中的元素可以是不同类型，series中只能是允许储存相同的数据类型；这样是为了有效使用内存，提高运算效率】
+
+DataFrame：二维的表格型数据结构，可以将DataFrame理解为series的容器，
+
+Pandas的IO功能十分强大，可以兼容许多文本文件
+
+Pandas可以兼容的文件超级多，例如csv、xml、HTML、xls、xlsx等。
+
+pd.read_csv(falename) #导入csv文件中的数据
+pd.read_excel(falename) #导入excel文件中的数据
