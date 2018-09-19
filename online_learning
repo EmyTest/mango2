@@ -1,0 +1,101 @@
+【pandas】
+
+Pandas中的数据结构，常用到的有Series和DataFrame两种。
+
+Series：一维数组，与Python基本的数据结构List也很相近。【注：list中的元素可以是不同类型，series中只能是允许储存相同的数据类型；这样是为了有效使用内存，提高运算效率】
+
+DataFrame：二维的表格型数据结构，可以将DataFrame理解为series的容器，
+
+Pandas的IO功能十分强大，可以兼容许多文本文件
+
+Pandas可以兼容的文件超级多，例如csv、xml、HTML、xls、xlsx等。
+
+pd.read_csv(falename) #导入csv文件中的数据
+pd.read_excel(falename) #导入excel文件中的数据
+
+
+
+----------------------------------------------------------------------------
+pandas：提供了使我们能够快速便捷地处理结构化数据的大量数据结构和函数。
+
+matplotlib：绘制数据图表的python库
+
+
+排序：data.sort_value(col1)     col1 升序：ascending
+多列排序：data.sort_value([col1,col2],ascending=[True,False])  col1升序；col2降序
+
+
+
+
+data.groupby(col) # 按照某列对数据框data做分组
+注意：groupby之后的数据并不是DataFrame格式的数据，而是特殊的groupby类型
+
+data.groupby(col).size() 通过size方法返回分组后的记录数目统计结果，该结果是series类型
+
+data.groupby(col1)[col2].mean()    按照列col1对数据框data做分组处理后，返回对应的col2的平均值
+
+【问题一】：module 'pandas' has no attribute 'append'
+
+pd.append(data2)
+
+# pd.concat([data1,data2],axis=1)  #在数据框data1的列最后添加数据框框data2，其中data1和data2的行数应该相等 sql中的uinon all
+
+
+data.mean() # 得到数据框data中每一列的平均值
+
+data.corr() # 得到数据框data中每一列与其他列的相关系数
+
+data.count() # 得到数据框data中每一列的非空值个数
+
+data.max() # 得到数据框data中每一列的最大值
+
+data.min() # 得到数据框data中每一列的最小值
+
+data.median() # 得到数据框data中每一列的中位数
+
+data.std() # 得到数据框data中每一列的标准差
+
+data.describe() # 得到数据框data每一列的描述性统计
+
+
+
+--------------------------------------------------------
+data.to_csv(filename)  #将数据框（dataframe）中的数据导入csv格式的文件中
+data.to_excel(filename) #将数据框（dataframe）中的数据导入excel格式的文件中
+data.to_json(filename)  #将数据框（dataframe）中的数据导入json格式的文件中
+
+
+
+
+【review】
+===================================================================================
+Python包含五个标准的数据类型：它们是 Numbers(数字)，String(字符串)，List(列表)，Tuple(元组)和Dictionary(字典)
+
+while循环在符合给定的判断条件时执行循环体，不符合则退出循环体，for循环根据设定的次数重复执行代码
+
+continue用于跳过本次循环，break则是用于退出整个循环
+
+循环控制语句，break，continue和pass
+
+当while后的条件永远为true时，这个循环会无限的循环下去
+
+
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+字典中的键必须是唯一的，值可以不唯一
+值可以采用任意数据类型，但键的类型必须是像字符串，数字或元组这样不可变的
+
+
+==========================================================================================
+python I/O函数
+输入输出函数
+
+
+
+
+
+
+
+
+
