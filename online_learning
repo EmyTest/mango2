@@ -94,6 +94,12 @@ python I/O函数
 
 
 
+异常
+except  BaseException
+
+
+
+
 
 
 
