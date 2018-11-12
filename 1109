@@ -162,7 +162,498 @@ QPS    ,CPU 了解
          【4-2】
          
 
-python常见得问题
+【【python常见的问题】】
+说一下面向对象的概念：
+                   面向对象编程，简称OOP,是一种程序设计思路
+                   主要包括：类，继承，多态 ，实例，属性，方法
+                   
+                   
+                   
+
+
+
+
+
+什么是进程，线程，协程：
+                      进程：独立数据空间，进程间不共享数据，系统调度
+                      线程：执行程序的最小单元，进程内线程间共享资源，系统调度
+                      协程：程序员调度，分解一个线程成为多个“微线程”
+                      
+
+#encoding:utf-8
+#进程
+# from multiprocessing import Process
+#
+# def foo(i):
+#     print("this is Process",i)
+# for i in range(5):
+#     p = Process(target=foo,args=(i,))
+#     p.start()
+
+
+#线程
+# import threading
+#
+# def show(i):
+#     print('this is thread',i)
+#
+# for i in range(5):
+#     t = threading.Thread(target=show,args=(i,))
+#     t.start()
+
+
+
+#协程
+import gevent
+
+def foo():
+    print('start_foo')
+    gevent.sleep(2)
+    print("end_foo")
+def bar():
+    print("start_bar")
+    gevent.sleep(0)
+    print("end_foo")
+# foo()
+# bar()
+gevent.joinall([
+    gevent.spawn(foo),
+    gevent.spawn(bar),
+])
+
+
+如何使用python实现socket编程：
+                      socket又称套接字，应用程序通过套接字向网络发出请求
+                      应用程序通过套接字应答网络请求
+                      使主机间或一台计算机上的进程间可以通讯
+                      
+                      
+
+
+
+什么是lambda函数：
+                返回一系列连续增加的整数
+                工作方式类似于 分片
+                可以生成一个列表对象
+                
+
+
+
+
+tuple和list函数的区别：
+                元组，不可修改
+                列表，可修改
+
+
+
+
+range函数的用法：
+                注：python2 和python3里面的range函数不一样
+
+
+
+字符串的拆分方法:
+                string对象的split方法，不允许有多个分隔符
+                函数re.split()，允许为分隔符指定多个正则模式
+                
+                
+line = 'i am super man!'
+print(line.split(" "))
+import re
+print(re.split("[m]",line))             
+
+------------------------------------------
+
+
+['i', 'am', 'super', 'man!']
+['i a', ' super ', 'an!']
+---------------------------------------------------------------------------------------
+
+
+
+
+
+单引号，双引号，三引号的区别：
+                        单引号，双引号，没有区别；三引号可以换行
+                        
+                        
+
+*args和**kwargs什么作用：
+                *args：可变的参数列表
+                **kwargs：键值对参数列表
+
+
+
+#arg
+# def test_args(first,*args):
+#     print(first)
+#     for v in args:
+#         print('args %s'%v)
+# args = (2,3,4,5)
+# print('--------')
+# test_args(1,2,3,4,5)
+
+#kwargs
+def test_kwargs(first,*args,**kwargs):
+    print(first)
+    for v in args:
+        print("args %s" %v)
+    for k ,v in kwargs.items():
+        print("kwargs",(k,v))
+# args = (2,3,4,5)
+# kwargs:k1=5,k2=6,k0=4
+test_kwargs(1,2,3,4,5,k0=4,k1=5,k2=6)
+
+
+
+
+
+
+python中pass语句的作用：
+                       占位符，实现一个空函数
+                       
+                       
+                       
+                
+
+re模块match和search方法的不同：
+                        search，扫描整个字符串查找匹配
+                        match，只在字符串的开始位置匹配
+                    
+
+
+import re
+
+s1 = 'helloworld,helloworld'
+w1 = 'hello'
+w2 = 'world'
+#search扫描整个字符串
+print('1',re.search(w2,s1))
+print('2',re.search(w2,s1).group())
+
+#match只在字符串开始位置匹配
+print('3',re.match(w2,s1))
+print('4',re.match(w2,s1).group())
+
+
+--------------------------------------------------------------------
+
+
+1 <_sre.SRE_Match object; span=(5, 10), match='world'>
+2 world
+3 None
+Traceback (most recent call last):
+  File "D:/untitled/pyt crs/a12.py", line 32, in <module>
+    print('4',re.match(w2,s1).group())
+AttributeError: 'NoneType' object has no attribute 'group'
+
+---------------------------------------------------------------------
+                        
+                        
+
+解释一下WSGI和FastCGI的关系：
+                CGI：公共网关接口（CommonGateway Interface）
+                     HTTP服务器与机器上的程序进行交互的一种工具
+                     程序须运行在网络服务器上，和语言无关
+                
+                WSGI：Python Web Server Gateway Interface
+                      python应用程序和WEB服务器之间的一种接口
+                      
+                FastCGI: 像是一个常驻（long-live）型的CGI，它可以一直执行着
+                
+                
+                
+              
+
+python是如何操作文件的：
+                       打开文件
+                       写入或读取数据
+                       关闭文件
+                       
+
+模式	可做操作	  若文件不存在	是否覆盖
+r	 只能读	     报错	              -
+r+	 可读可写	    报错	             是
+w	 只能写	     创建	              是
+w+　	可读可写	   创建               是
+a　　	只能写	   创建	            否，追加写
+a+	可读可写	    创建	             否，追加写                       
+
+
+
+#写文件
+f = open('test.txt','wt')
+f.write("hello world")
+f.close()
+#使用with，追加内容，不用关系文件关闭问题
+with open('test.txt','at') as f:
+    f.write("\nhello mook")
+#读取文件
+with open("test.txt",'rt') as f:
+    print(f.read())
+    
+    
+    
+    
+
+python的内存管理机制：
+                        引用计数
+                        垃圾回收
+                        内存池
+                        
+                        
+from  sys import getrefcount
+
+a1 = 10000000
+a2 = 10000000
+del a1
+del a2
+print(id(a1))
+print(id(a2))
+
+#检验a和b是同一个东西
+print(a1 is a2)
+
+#获取a2的引用计数
+print(getrefcount(a1))   
+
+
+
+
+
+
+                        
+
+dict的items和iteritems区别：
+                items方法以列表方式返回，返回时没有特殊顺序
+                iteritems 方法类似，但返回的是一个迭代器对象
+
+【注】：在Python2.x中，
+
+iteritems() 用于返回本身字典列表操作后的迭代
+
+
+
+Python 3.x 里面，
+
+iteritems() 方法已经废除了，而 items() 得到的结果是和 2.x 里面 viewitems() 一致的。在3.x 里 用 items()替换iteritems() ，可以用于 for 来循环遍历。
+--------------------- 
+作者：kukudehui 
+来源：CSDN 
+原文：https://blog.csdn.net/kukudehui/article/details/79896924 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+五：基于python常问算法有哪些？？
+
+排序：
+       从小到大   sorted(list)
+       从大到小   sorted(list,reverse=True)
+
+
+冒泡 :
+        比较相邻的元素，如果第一个比第二个大，就交换
+        一轮遍历，每两个相邻元素，重复1，最大放队尾
+        不包括已经排队尾的，重复2
+        
+-----------------------------------------------
+#冒泡排序
+def bubble_sort(lists):
+    #获取数组的长度
+    count = len(lists) -1
+    #N个元素便利N次
+    for index in range(count,0,-1):   #负数递减
+        #第i个和第i+1个依次对比
+        for sub_index in range(index):
+            #大的元素冒上去
+            if lists[sub_index] > lists[sub_index+1]:
+                lists[sub_index],lists[sub_index+1] = lists[sub_index+1],lists[sub_index]
+    return lists
+alist = [0,10,88,19,9,1]
+print(bubble_sort(alist))
+
+-----------------------------------------------------
+
+
+
+
+
+快排原理及代码实现：
+        从列表中挑出一个元素，作为基准值key
+        所有小于key的元素放左边，所有大于key的元素放在右边
+        分别递归左侧列表，右侧列表  
+        
+        
+ ---------------------------------------------------------------------------------------------------       
+#【快速排序】【5-3】
+
+def quick_sort(lists,left,right):
+    if left > right:
+        return lists
+    #定义游标
+    low = left
+    high = right
+
+    #取参考标志，最左边的元素
+    key = lists[low]
+    while low < high:
+        #从最右侧向左，依次和标志元素对比，如果右侧的元素大于标志元素
+        while low <high and lists[high] >= key:
+            #右侧减1
+            high -= 1
+        #否则low赋high值
+        lists[low] = lists[high]
+        #从最左侧向右，依次和标志元素对比，如果左侧的元素小于标志元素
+        while low < high and lists[low] <= key:
+            #左侧+1
+            low += 1
+        #否则high赋low值
+        lists[high] = lists[low]
+    #最后给high位置赋值
+    lists[high] = key
+    #处理左侧元素
+    quick_sort(lists,left,low -1)
+    #处理右侧元素
+    quick_sort(lists,low+1,right)
+    return lists
+alist = [0,10,88,19,9,1,7]
+print(quick_sort(alist,0,6))
+
+--------------------------------------------------------------------------------------------------------------
+堆排序： 
+        堆排序是指利用堆的数据结构设计的一种排序算法
+        堆近似一个完全二叉树结构
+        子节点的键值对小于（或者大于）它的父节点
+
+
+#堆排序
+def heap_sort(list):
+    def sift_down(start,end):
+        '''最大堆调整'''
+        root = start
+        print("root %d start %d end %d"%(root,start,end))
+        while True:
+            child = 2* root +1
+            print("child index: %d"%child)
+            #终止条件，孩子的索引值超过数组的最大长度
+            if child > end:
+                break
+            print("lst child value:%d"%list[child])
+            #确定最大的孩子节点的索引值
+            if child +1 <= end and list[child] <list[child +1]:
+                child += 1
+                print("child+1 index: %d"%child)
+            #孩子节点最大值和根节点交换
+            if list[root] < list[child]:
+                list[root],list[child] = list[child],list[root]
+                print("list root %d "%list[root],"listchild %d"%list[child])
+                root = child
+                #print("root %d%root)
+            else:
+                break
+    print("---------------创建最大堆----------------------------")
+    #创建最大堆
+    print(range((len(list) -2)//2,-1,-1))
+    for start in range((len(list) -2)//2,-1,-1):
+        print("--------loop start %d"%start)
+        sift_down(start,len(list) -1)
+        print(list)
+
+    print('----------排序过程-------')
+    #堆排序
+    for end in range(len(list)-1,0,-1):
+        #首位交换
+        list[0],list[end] = list[end],list[0]
+        #剩余重新排序
+        sift_down(0,end-1)
+        print(list)
+alist = [70,60,12,40,30,8,10]
+print((heap_sort(alist)))
+
+
+        
+           
+
+
+二分查找：
+                
+
+
+素数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 python常问算法
 
