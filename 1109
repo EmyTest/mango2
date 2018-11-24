@@ -819,6 +819,44 @@ makefile的作用是什么
 
 
 
+fiddler实现慢网速：
+        fiddlerscript ---   go to：（before request）第一个选项 改： 
+        if (m_SimulateModem) {
+            // Delay sends by 300ms per KB uploaded.
+            oSession["request-trickle-delay"] = "3000"; 
+            // Delay receives by 150ms per KB downloaded.
+            oSession["response-trickle-delay"] = "1500"; 
+        }
+        
+save script
+
+rules ---  performance ---  选中 simulat moden speeds
+
+-------------------------------------------------------------------------------
+
+
+模拟不同的状态码：
+                
+autoresponder：
+
+
+
+Android系统相关问题：
+
+        安卓的四大组件
+        
+        
+        activity的生命周期是什么
+        
+        什么是ANR
+        
+        Android常见的五种布局是什么
+        
+        android中的动画有哪几种类型
+        
+        
+        
+
 
 
                       
