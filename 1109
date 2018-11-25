@@ -855,7 +855,360 @@ Android系统相关问题：
         android中的动画有哪几种类型
         
         
+ 1125更新
+ 
+ 
+ Android的四大组件：
+                Activity：程序与用户的交互窗口
+                Service：在程序后台，完成用户的操作
+                Contentprovider：提供数据的统一访问格式
+                broadcast receiver：应用程序之间的传输信息机制
+
+Activity的生命周期是什么：
+        Acitived：
+        Stoped：
+        Paused：
+        Killed：
+
+什么是ANR：
+        Application not responding
+        Activity的最长执行时间是5秒
+        用户可以选择“等待”让程序继续运行，或“强制关闭”
+
+Android常见的五种布局是什么：
+        Framelayout（框架布局）
+        linear layout（线性布局）
+        absolute layout（绝对布局）
+        relative layout（相对布局）
+        table layout（表格布局）
+
+Android中的动画有哪几种类型：
+        Tween动画，组件移动，缩放，透明度的变化
+        Frame动画，通过顺序播放来实现，类似电影
+
+如何重启adb服务：
+        Adb kill-server
+        Adb start-server
+
+App的安装与卸载:
+        Adb -s <devicename> install <path-to-apk>
+        Adb -s <devicename> install -r <path-to-apk>  覆盖安装
+        Adb -s <devicename> uninstall <packagename>
+
+
+如何在电脑和手机之间传输数据：
+        adb push D:\test.apk /data/local/mp/test.apk
+        Adb pull /data/local/tmp/test.txt D:\
+
+
+
+如何静默安装app:
+        Adb push D:\test.apk /data/temp/test.apk
+        Adb shell pm install -f  /data/temp/test.apk
+
+
+
+如何使用adb启停一个app:
+        Adb shell am start -W -S package/activity
+        Adb shell am force-stop package     只需跟包名不用写路径
+
+
+
+如何通过某个关键词查找已安装的包:
+        Adb shell pm list package -f keyword
+        Adb shell pm list package -3 keyword    -3：第三方安装的app 不是手机自带的
+        Adb shell pm list package -i keyword     已经安装的
+
+
+
+
+如何截屏 录屏：
+        Adb shell scrncap /data/local/tmp/screen.png
+        Adb shell screenrecod /data/locat/tmp/demo.mp4
+
+如何抓取log cat日志:
+        Adb logcat
+        Adb shell logcat
+        如何获取当前的cpu 、内存状态:
+        Adb shell dumpsys meminfo package
+        Adb shell dumpsys cpuinfo | findstr package
+
+monkey相关的问题
+
+        Monkey进行压力测试的命令？
+        Adb shell monkey -p <packagename>  <count>    count:执行个数
+        Adb shell monkey -p com.android.calculator2 100
+
+
+如何重现crash、ANR过程:
+        添加参数 -s seed
+        Adb shell monkey -s 6789 -p com.android.calculator2 100
+
+
+
+如何提取crash 、ANR的信息:
+        将monkey执行过程中的日志重定向到文件
+        测试版app连接第三方统计平台
+
+如何设置monkey运行8个小时：
+        添加参数 --throttle
+        Adb shell monkey -v -v -v -s 6789 --throttle 300 -p com.android.calculator2 100【monkey变慢执行，设置等待时间 】
+
+
+在crash/ANR后，如何继续执行？
+        添加忽略Crash参数     --ignore-crashes
+        添加忽略ANR参数      --ignore-timeouts
+
+        Adb shell monkey -v -v -v -s 6789 --throttle 300 --ignore-crashes --ignore-timeouts -p com.android.calculator2 100
+
+
+如何让monkey执行指定的事件？
+        触摸事件 --pct-touch
+        动作事件  --pct-motion
+        轨迹球事件 --pct-trackball
+        基本导航事件  --pct-nav
+        主要导航事件 --pct-majornav
+        系统导航事件 --pct-syskeys
+        应用启动事件  --pct-appswitch
+        其他类型事件 --pct-anyevent
+
+        Adb shell monkey -v -v -v -s 6789 --throttle 300 --ignore-crashes --ignore-timeouts --pct-touch 50 --pct-motion 50 -p com.android.calculator2 100
+
+
+【自动化工具】
+
+Instrumentation：
+        * 原理：
+        * 测试什么：功能性测试
+                      Activity生命周期的测试
+                      模拟数据库操作的测试和兼容性测试
+
+        * 什么情况使：使用Java jUnit 框架
+                      需要进行白盒测试时
+                      需要使用Mock技术模拟系统对象时
+                      【需要做白盒测试时使用】
+UIAutomator UIAutomatorViewer：
+        Uiautomator 原理：安卓UI自动化测试工具
+                      不需要源码，基于Java语言开发
+                      类库：UiDevice  ，UiSelector ，UiScrollable  ，UiObject ，UiCollection
+
+Uiautomator可以测试什么：
+        App ui层的交互操作
+        不需要源码，可以模拟跨进程操作（如：从app转发内容到第三方平台如qq，微信，微博等）
+        基于Java junit框架，黑盒UI自动化（不用关心代码逻辑）
+
+如何识别app视图内的元素：
+        UiautomatorViewer  安卓sdk tools文件夹下
+        可以识别元素的id，classname，bond...
+
+
+Selendroid、Robotium：
+        Selendroid原理：基于Instrumentation做的封装
+四大组件：
+        Selendroid client:Webdriver +移动特性的实现
+        Selendroid server：一个instrumentation APK
+        Androiddriver-app：一个WebViewActivity，即浏览器
+        Selendroid-standalone：大总管，负责准备环境
+
+Robotium原理：
+        基于Instrumentation进行封装，实现的Android测试框架
+        封装了一个solo类库，提供自动化测试API
+        由于是基于Instrumentation，测试时需要源码
+
+
+Appium：
+        什么是appium：
+        一个开源的移动端UI自动化测试框架
+
+
+Appium理念：
+        不需要app源码
+        不局限于语言或者框架
+        接口统一，不需要重复开发
+        必须是开源的
+
+
+
+
+Appium相关的概念：
+        CS架构，appium核心是一个web服务器
+        Session，客户端初始化session与服务端交互
+        Desired capabilites，处死话时键值对组合
+
+Appium环境都包括哪些内容：
+        Appium server，操作与驱动手机
+        Appium client，支持多语言调用
+
+
+Appium都支持哪些开发语言：
+        Android SDK，JDK , Appium
+        Pycharm，python环境
+        库：selenium，appium-python-client【需要版本匹配，可能出现api不兼容的情况】
+        Java，Javascript，PHP，python，Ruby，c#，perl，Object C
+
+
+appium初始化时都需要配置哪些内容：
+        PaltformName，目标设备平台android/ios
+        PlatformVersion，目标设备的平台版本
+        deviceName，目标设备名称
+        AppPackage，app包名（Android）
+        AppActivity，app activity名称（android）
+        automationName，自动化驱动类型 Selendroid/appium
+        unicodeKeyboard，是否使用appium输入法
+        resetkeyboard，是否恢复默认键盘
         
+        
+
+
+
+
+Appium测试native app的原理：
+
+                       
+                                               
+                 ---         ---- Android
+           Python --- appium ------------手机
+             
+Appium测试hybrid app的原理：
+                测试混合型app，区别：页面的元素java + html   共同实现  如：手机浏览器；app里面加载了H5页面    // 都是Java语言
+                
+                
+                <--------                < ----------
+python --        appium              selendroid                      手机
+                -------->                 ---------->
+                
+                
+                
+Appium测试 ios app的原理是什么：
+                   json
+                   wire
+                   protocol
+                 ---------                    ----------                  -----------
+        
+test script                   appium server                   WDA                                           wda app      
+                 ---------                    ----------                  -----------
+
+                                                           facebook
+                                                           WebDriverAgent
+            
+
+
+
+如何自动化测试Native app：
+        元素定位，识别：
+                第一个选择，使用UIAutomatorViewer
+                第二个选择，使用Appium的Inspector
+                
+        定位元素的API都有哪些：
+                find_element_by_accessibility_id
+                find_element_by_id
+                find_element_by_name
+                find_element_by_class_name
+                find_element_by_xpath
+                
+        脚本的编写规则：
+                LOVE规则：
+                L:Locate定位
+                O:Operate操作
+                V:Verify验证
+                E:Exception异常处理
+                
+        初始化注意事项：
+                不需要指定app包路径
+                默认使用appium驱动
+                如果需要输入中文，需要添加输入法相关配置
+          
+        
+           
+        
+如何自动化测试hybird app：
+        元素定位，识别工具：
+                Native部分：，UIAutomator或者appium inspector
+                WebView部分，chrome浏览器的调试模式
+                
+        定位元素的API都有哪些：
+                find_element_by_accessibility_id
+                find_element_by_id  【和native里面的id有区别。
+                find_element_by_name
+                find_element_by_classname
+                find_element_by_xpath  【h5页面里面的..........
+                find_element_by_link_text
+                find_element_by_tag_name     【div    table  body.....
+                
+                
+                
+        脚本编写规则：
+                S -LOVE规则：
+                S:Switch 
+                L:Locate定位
+                O:Operate操作
+                V:Verify验证
+                E:Exception异常处理        
+        
+        初始化时注意事项：
+                需要明确指定驱动名称为：selendroid
+                需要明确指定app的路径，因为需要签名
+                
+                
+        
+        
+如何使用selenium测试web页面：
+        工具：pycharm，chrome
+        包：selenium，python
+        webdriver：chrome driver/firefox driver/ie driver等
+        元素识别工具：firefox或者chrome的调试工具
+        元素定位：
+                find_element_by_link_text
+                find_element_by_id
+                find_element_by_name
+                find_element_by_class_name
+                find_element_by_xpath
+                find_element_by_tag_name
+        
+        
+        
+        
+        
+如何使用selenium测试WEB页面：
+如何使用appium测试WAP页面：
+        环境准备：
+                IDE:Pycharm
+                包：python，selenium，appium-python-client
+                工具：appium，chrome
+        元素识别：
+                chrome浏览器调试wap页面
+        脚本的编写：
+                初始化时，指定browsername为：Browser
+                自动化测试代码和selenium相同
+                
+    
+    
+    from appium import webdriver
+    import time
+    #定义初始化的属性信息
+    desired_caps = {}
+    desired_caps['platformName'] = 'Android'
+    desired_caps['platformVersion'] = '5.1'
+    desired_caps['deviceName'] = '192.168.56.102:5555'
+    desired_caps['browserName'] = 'Browser
+    desired_caps['unicodeKeyboard'] = 'True'
+    desired_caps['resetKeyboard'] = 'True'
+    driver = webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
+    
+    #打开首页
+    driver.get("http://www.imooc.com")
+    time.sleep(3)
+    
+    #验证实战标签显示了
+    e = driver.find_element_by_xpath('//*[@id="pages-container"]/section[2]/u1/li[1]/a/span')
+    #断言显示了
+    ；
+    
+    
+    
+    
+    
+    
 
 
 
