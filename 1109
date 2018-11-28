@@ -1209,6 +1209,63 @@ test script                   appium server                   WDA               
     
     
     
+    
+    
+    
+    
+    unittest原理：
+    
+        unittest框架都包含哪些内容：
+                TestFixture
+                TestCase
+                TestSuite
+                TestRunner
+         
+         
+         
+        TesFixture：
+                SetUp
+                TestCase
+                TearDown
+        
+                
+    
+    
+    
+    DDT-数据驱动：
+        数据驱动测试：即黑盒测试，功能测试
+        数据驱动单元测试为数据源中的每行重复进行一种单元测试
+        数据驱动单元测试，常用情况是使用多个输入值测试API
+        
+        
+    
+    
+    
+    Lettuce-行为驱动
+    
+    
+    KDT-关键字驱动
+    
+    
+    生成测试报告
+    
+    
+    测试邮件通知
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
 
 
 
