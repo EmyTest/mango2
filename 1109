@@ -1312,8 +1312,47 @@ test script                   appium server                   WDA               
     【接口自动化】
     
     
+    如何实现一个API测试框架
+    用例层   ：testCases  DDT
+    控制层    ： Unittest testreport email
+    驱动层    ：python requests
+    
+    如何使用python request 发送get请求？
+        构造header  -----------      cookies   referer    user-agent  信息
+        
+        构造url        -----------               url  参数
+        
+        构造data     ----------------             请求body
+        
+        
+        
+        
+        
+        
+    如何使用python request 发送get请求？
+    如何实现一个API测试框架
+    
+    持续集成：开发阶段，对项目进行持续性
+    自动化编译、测试，以达到控制代码质量的手段
+    持续集成是一种软件开发实践
+    开发人员、版本控制
+    减少风险，减少重复过程
+    任何时间、地点生成可部署的软件
+    增强项目可见性、建立团队对开发产品的信心
     
     
+    持续集成工具：
+        jenkins、buildbot
+        Travis  、strider
+        Go  、Integrity
+        
+        
+    
+    搭建jenkins持续集成平台：
+        下载jenkins.war
+        命令行运行：Java-jar jenkins.war
+        在浏览器窗口打开：http://localhost:8080
+        
     
     
     
