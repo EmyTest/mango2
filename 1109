@@ -1355,18 +1355,72 @@ test script                   appium server                   WDA               
         
     
     
+    压力测试：
+    loadrunner
+    jmeter
+    
+    压力测试指标：
+    
+    cpu
+    内存（虚存，实存）
+    QPS、平均响应时间
     
     
     
-   
     
     
+   如何开展服务端压力测试
+        搭建服务端模块，并启动服务
+        监控进程相关指标，内存，cpu
+        监控模块的执行情况，QPS,平均响应时间
+        收集数据并进行分析，生成曲线图
+        根据分析结果，得出测试结论
     
 
 
+app兼容性测试：
+        1、系统版本（android ios平台，不同版本
+        2、分辨率（小屏，大屏，全屏）
+        3、手机品牌（华为，小米，oppo，vivo等）
 
-                      
-                        
+        
+        
+        
+        
+
+wap页面兼容性测试：
+        1、不同平台的不同浏览器（safari，chrome等
+        2、分辨率（小屏，大屏，全屏
+        3、转发到第三方平台
+
+pc页面兼容性测试：
+        1、操作系统（常用windows，mac os   ，平板电脑
+        2、浏览器（IE系列7，8，9，10，11、firefox、chrome等
+        3、分辨率（笔记本、台式机、窗口缩放等
+        
+
+  调试：
+        
+         app的bug调试：
+                网络相关工具，fiddler，wareshark，charles
+                adb、am、logcat等
+                云平台，bug复现
+                
+                
+         wap网页的bug调试
+                chrome调试工具，可设置移动app UA
+                winre，web inspector remote
+                
+                
+         pc网页的bug调试:
+                Chrome调试工具
+                火狐的firebug
+                
+           
+                
+         
+         
+                     
 
 
 
