@@ -1,1 +1,4 @@
 
+exit
+pipenv uninstall flask
+pipenv graph   查看依赖关系
