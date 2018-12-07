@@ -2,3 +2,26 @@
 exit
 pipenv uninstall flask
 pipenv graph   查看依赖关系
+
+
+
+pycharm （VS Code）
+
+设置开发工具的默认解释器
+  
+  某盘:\flask\fisher>pipenv --venv   
+  
+C:\xxxxx\xxxx\.virtualenvs\fisher-K6crLUOs
+
+
+
+ flask最小原型与唯一URL原则:
+ 
+ 
+ 
+ 
+app.run(debug=True)   #打开调试模式，不用每次手动重启
+
+
+
+      
