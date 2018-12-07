@@ -25,3 +25,16 @@ app.run(debug=True)   #打开调试模式，不用每次手动重启
 
 
       
+2-8 app.run相关参数与flask配置文件
+
+
+2-9   if __name__的作用
+
+2-10：
+  视图函数：
+      返回 status code 200，401，301
+      返回 content-type     http headers
+      默认值  content-type  = text/html
+      封装对象   response
+      
+      
