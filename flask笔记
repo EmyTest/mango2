@@ -38,3 +38,10 @@ app.run(debug=True)   #打开调试模式，不用每次手动重启
       封装对象   response
       
       
+
+
+isbn搜索
+http://t.yushu.im/v2/book/isbn/{isbn}
+
+豆瓣API
+https://api.douban.com/v2/book
