@@ -73,3 +73,22 @@ def helloo():
 if __name__ == '__main__':
     #生产环境 nginx + uwsgi
     app.run(host='0.0.0.0',debug=app.config['DEBUG'])   #1、指定ip（介绍外网的访问）；2、打开调试模式，不用每次手动重启
+    
+    
+ 代码重构
+ 
+     def get(self,url,return_json=True):
+        r = requests.get(url)
+        if r.status_code != 200:
+            return {} if return_json else''
+        return r.json() if return_json else r.text
+        # if r.status_code == 200:
+        #     if return_json:
+        #         return r.json()
+        #     else:
+        #         return r.text
+        # else:
+        #     if return_json:
+        #         return {}
+        #     else:
+        #         return ''
