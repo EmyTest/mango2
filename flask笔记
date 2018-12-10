@@ -92,3 +92,15 @@ if __name__ == '__main__':
         #         return {}
         #     else:
         #         return ''
+
+
+
+
+#难点：路由（url）的设计
+        #dict 序列化
+        #API + JS(单页面，NG、VUE、React 前后端分离 SEO
+        #TPS + 小程序 + webview
+        #网站 多页面 ajax
+        #对立
+        # C GO
+        #API
