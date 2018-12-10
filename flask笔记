@@ -38,7 +38,8 @@ app.run(debug=True)   #打开调试模式，不用每次手动重启
       封装对象   response
       
       
-
+关键字
+http://t.yushu.im/v2/book/search?q={}&start={}&count={}
 
 isbn搜索
 http://t.yushu.im/v2/book/isbn/{isbn}
