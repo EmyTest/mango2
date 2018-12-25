@@ -1,0 +1,79 @@
+如何使用生成器函数实现可迭代对象
+
+
+class PrimeNumbers(object):
+    def __init__(self,start,end):
+        self.start = start
+        self.end = end
+    def isPrimeNumber(self,k):
+        if k <2:
+            return False
+        for i in range(2,k):
+            if k%i == 0:
+                return False
+        return True
+    def __iter__(self):
+        for k in range(self.start,self.end+1):
+            if self.isPrimeNumber(k):
+                yield k
+for x in PrimeNumbers(1,100):
+    print(x)
+
+
+
+
+如何进行反向迭代以及如何实现反向迭代
+  实现一个连续浮点数发生器floatrange 根据给定范围和步进值（step） 产生一系列连续浮点数 如迭代floatrange(3.0，4.0，0.2）可产生序列：
+  正向：3.0  -->  3.2 --> 3.4 -->3.6 --3.8 -->4.0
+  反向： 4.0--3.8-->3.6 --> 3.4-->  3.2-->3.0 
+  
+  
+  
+reverse（）
+
+class FloatRange:
+    def __init__(self,start,end,step=0.1):
+        self.start = start
+        self.end = end
+        self.step = step
+    def __iter__(self):
+        t = self.start
+        while t <= self.end:
+            yield t
+            t += self.step
+    def __reversed__(self):
+        t = self.end
+        while t >= self.start:
+            yield t
+            t -= self.step
+#for x in reversed(FloatRange(1.0,4.0,0.5)):
+for x in FloatRange(1.0,4.0,0.5):
+    print(x)
+
+
+
+如何对迭代器做切片操作？
+  有某个文本文件，我们想读取其中某范围的内容 ，如100-300行之间的内容，python中文本文件是可迭代对象，我们是否可以使用类似列表切片的方式得到一个100-300行文件内容的生成器？
+  
+  f = open('/var/log/dmesg')
+  f[100:300]
+
+解决方法： 使用标准库中的itertools.islice，它能返回一个迭代对象切片的生成器
+
+
+【如何去掉字符串中不需要的字符】
+  
+  1、字符串strip（） ，lstrip（），rstrip（）方法去掉字符串两端
+  2、删除单个固定位置的字符，可以使用切片+拼接的方法
+  3、字符串的replace（）方法或者正则表达式re.sub()删除任意位置字符
+  4、字符串translate（）方法，可以同时删除多种不同字符
+
+【如何拆分含有多种分隔符的字符串】
+
+  
+
+
+
+
+
+
