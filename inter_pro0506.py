@@ -149,8 +149,141 @@ map()：【遍历】序列，对序列中每个元素进行操作，最终获取
 
 reduce()：对于序列内所有元素进行【累计】操作，即是序列中后面的元素与前面的元素做累积计算（结果是所有元素共同作用的结果）
 
-filter()：‘【筛选函数】’，filter()把传人的函数依次作用于序列的每个元素，然后根据返回值是True还是false决定保留还是丢弃该元素，返回符合条件的序列
+filter()：‘【筛选函数】’，filter()把传入的函数依次作用于序列的每个元素，然后根据返回值是True还是false决定保留还是丢弃该元素，返回符合条件的序列
 
 """
+
+
+
+
+#
+# def fibonicci(n):
+#     start = 0
+#     def fib(x):
+#         if x == 0:
+#             return 0
+#         elif x == 1:
+#             return 1
+#         else:
+#             return fib(x-1)+fib(x-2)
+#     while start < n:
+#         start += 1
+#         yield fib(start)
+# print([x for x in fibonicci(10)])
+#
+#
+
+
+
+
+
+
+
+
+
+'''yield函数'''
+
+
+# def foo():
+#     print("starting...")
+#     while True:
+#         res = yield 4
+#         print("res:",res)
+# g = foo()
+# print('--1--',next(g))
+# print("*"*20)
+# print('--2--',next(g))
+
+
+
+
+
+
+
+'''多线程'''
+# import threading
+# import time
+#
+# class mythread(threading.Thread):
+#     def __init__(self,threadname):
+#         threading.Thread.__init__(self,name=threadname)
+#     def run(self):
+#         global x
+#         lock.acquire()
+#         for i in range(3):
+#             x = x+1
+#         time.sleep(1)
+#         print(x)
+#         lock.release()
+# if __name__ == '__main__':
+#     lock = threading.RLock()
+#     t1 = []
+#     for i in range(10):
+#         t = mythread(str(i))
+#         t1.append(t)
+#     x = 0
+#     for i in t1:
+#         i.start()
+#
+
+# coding=utf-8
+# import threading
+#
+# class Producer(threading.Thread):
+#     def __init__(self,threadname):
+#         threading.Thread.__init__(self,name=threadname)
+#     def run(self):
+#         global x
+#         con.acquire()
+#         if x == 10000:
+#             con.wait()
+#             pass
+#         else:
+#             for i in range(10000):
+#                 x = x+1
+#                 con.notify()
+#         print(x)
+#         con.release()
+#
+# class Consumer(threading.Thread):
+#     def __init__(self,threadname):
+#         threading.Thread.__init__(self,name=threadname)
+#     def run(self):
+#         global x
+#         con.acquire()
+#         if x == 0:
+#             con.wait()
+#             pass
+#         else:
+#             for i in range(10000):
+#                 x = x-1
+#             con.notify()
+#         print(x)
+#         con.release()
+#
+# if __name__ == '__main__':
+#     con = threading.Condition()
+#     x = 0
+#     p = Producer('Producer')
+#     c = Consumer('Consumer')
+#     p.start()
+#     c.start()
+#     p.join()
+#     c.join()
+#     print(x)
+
+
+
+f = open("F:\\aaa11.txt")
+line = f.readline()
+while line:
+    lists = list(line)
+    letter_num = lists.count('A')
+    print(letter_num)
+    line = f.readlines()
+f.close()
+
+
+
 
 
