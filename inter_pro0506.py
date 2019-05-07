@@ -274,16 +274,42 @@ filter()：‘【筛选函数】’，filter()把传入的函数依次作用于�
 
 
 
-f = open("F:\\aaa11.txt")
-line = f.readline()
-while line:
-    lists = list(line)
-    letter_num = lists.count('A')
-    print(letter_num)
-    line = f.readlines()
-f.close()
+# f = open("F:\\aaa11.txt")
+# line = f.readline()
+# while line:
+#     lists = list(line)
+#     letter_num = lists.count('A')
+#     print(letter_num)
+#     line = f.readlines()
+# f.close()
 
 
 
+# spam = 0
+# if spam < 5:
+#     print('hello,world')
+#     spam = spam + 1
 
 
+#
+# spam = 0
+# while spam < 5:
+#     print('hello,world')
+#     spam = spam + 1
+
+
+# while True:
+#     print('who are you?')
+#     name = input()
+#     if name != 'joe':
+#         continue
+#     print('hello,joe.what is the password?(it is a fish).')
+#     password = input()
+#     if password == 'swordfish':
+#         break
+# print('acess granted.')
+
+
+print('my name is')
+for i in range(5):
+    print('jimmy five times(' + str(i) + ')')
